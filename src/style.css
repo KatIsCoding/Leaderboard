@@ -1,0 +1,22 @@
+.mainContent {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#leaderboardTable {
+    list-style: none;
+    border: solid 2px black;
+    text-align: left;
+    padding: 5px;
+}
+
+#addNewScore {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#addNewScore * {
+    margin: 10px 0;
+}
+
