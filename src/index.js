@@ -1,13 +1,13 @@
+/* eslint-disable import/no-cycle */
 import './style.css';
 import { postNewScore, getScores } from './gameAPI.js';
 
 export const table = document.getElementById('leaderboardTable');
-const LOADMSG = document.createElement("p")
-LOADMSG.innerText = "Loading"
-
+const LOADMSG = document.createElement('p');
+LOADMSG.innerText = 'Loading';
 
 export const addScore = (data, postData = true) => {
-  const tableArr = [].slice.call(table.children)
+  const tableArr = [].slice.call(table.children);
   if (tableArr.includes(LOADMSG)) {
     table.innerHTML = '';
   }
@@ -20,8 +20,8 @@ export const addScore = (data, postData = true) => {
 };
 
 export const loadingState = async () => {
-  table.innerHTML = ""
-  table.appendChild(LOADMSG)
+  table.innerHTML = '';
+  table.appendChild(LOADMSG);
 };
 
 window.onload = () => {
