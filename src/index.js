@@ -1,8 +1,9 @@
 /* eslint-disable import/no-cycle */
-import './style.css';
-import './toast.css';
-import './stars.css';
 import { postNewScore, getScores } from './gameAPI.js';
+
+require('./stars.css');
+require('./toast.css');
+require('./style.css');
 
 export const table = document.getElementById('leaderboardTable');
 const LOADMSG = document.createElement('p');
