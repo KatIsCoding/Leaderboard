@@ -1,58 +1,57 @@
-export class ToastManager {
-    constructor() {
-        let body = document.querySelector("body")
+export default class ToastManager {
+  constructor() {
+    const body = document.querySelector('body');
 
-        this.toastContainer = document.createElement("div")
-        this.toastContainer.classList.add("toasts")
+    this.toastContainer = document.createElement('div');
+    this.toastContainer.classList.add('toasts');
 
-        body.appendChild(this.toastContainer)
+    body.appendChild(this.toastContainer);
 
-        this.icons = {
-            "SUCCESS": "fa-check",
-            "ERROR": "fa-times"
-        }
-    }
+    this.icons = {
+      SUCCESS: 'fa-check',
+      ERROR: 'fa-times',
+    };
+  }
 
-    Success(msg) {
-        return this._show(msg, "SUCCESS")
-    }
+  Success(msg) {
+    return this.show(msg, 'SUCCESS');
+  }
 
-    Error(msg) {
-        return this._show(msg, "ERROR")
-    }
+  Error(msg) {
+    return this.show(msg, 'ERROR');
+  }
 
-    _show(msg, type) {
-        let newToast = document.createElement("div")
-        const timeout = 4000
-        newToast.style.display = 'flex'
-        newToast.classList.add(type.toLowerCase())
-        newToast.classList.add("toast")
+  show(msg, type) {
+    const newToast = document.createElement('div');
+    const timeout = 4000;
+    newToast.style.display = 'flex';
+    newToast.classList.add(type.toLowerCase());
+    newToast.classList.add('toast');
 
-        newToast.innerHTML = `
+    newToast.innerHTML = `
                 <progress max="100" value="0"></progress>
                 <i class="fa ${this.icons[type]} resultIcon"></i><h3> ${msg} </h3>
-        `
-        const toastObj = {
-            counter: 0,
-            progressElement: newToast.querySelector("progress"),
-            timer: setInterval(() => {
-                toastObj.counter = toastObj.counter + (1000 / timeout)
-                toastObj.progressElement.value = toastObj.counter.toString()
-                if (toastObj.counter >= 100){
-                    newToast.style.display = "none"
-                    this.toastContainer.removeChild(newToast)
-                    clearInterval(toastObj.timer)
-                }
-            }, 10)
+        `;
+    const toastObj = {
+      counter: 0,
+      progressElement: newToast.querySelector('progress'),
+      timer: setInterval(() => {
+        toastObj.counter += (1000 / timeout);
+        toastObj.progressElement.value = toastObj.counter.toString();
+        if (toastObj.counter >= 100) {
+          newToast.style.display = 'none';
+          this.toastContainer.removeChild(newToast);
+          clearInterval(toastObj.timer);
         }
+      }, 10),
+    };
 
-        newToast.addEventListener("click", () => {
-            newToast.style.display = "none"
-            this.toastContainer.removeChild(newToast)
-            clearInterval(toastObj.timer)
-            })
+    newToast.addEventListener('click', () => {
+      newToast.style.display = 'none';
+      this.toastContainer.removeChild(newToast);
+      clearInterval(toastObj.timer);
+    });
 
-        this.toastContainer.appendChild(newToast)
-
-    }
+    this.toastContainer.appendChild(newToast);
+  }
 }
