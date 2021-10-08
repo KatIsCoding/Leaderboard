@@ -1,6 +1,9 @@
 /* eslint-disable import/no-cycle */
-import './style.css';
 import { postNewScore, getScores } from './gameAPI.js';
+
+require('./stars.css');
+require('./toast.css');
+require('./style.css');
 
 export const table = document.getElementById('leaderboardTable');
 const LOADMSG = document.createElement('p');
@@ -32,5 +35,12 @@ window.onload = () => {
   });
   document.getElementById('refreshLeaderboard').addEventListener('click', () => {
     getScores();
+  });
+
+  Array.prototype.forEach.call(document.getElementById('bg').children, (star) => {
+    const rand = Math.random() * (-3920 + 720) + 720;
+    const sign = Math.round(Math.random()) ? 1 : -1;
+    star.style.right = `${rand * sign}px`;
+    star.style['animation-delay'] = `${Math.random() * (5 - 0.1) + 0.1}s`;
   });
 };
