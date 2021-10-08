@@ -13,14 +13,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 id="gameTitle">Game's Title</h1>
+    <h1 id="gameTitle">Space Invaders Leaderboard</h1>
     <section class="mainContent">
+        <section id="bg">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </section>
         <section id="leaderboardSection">
             <div class="sectionHeader">
                 <h3>
                     Recent Scores
                 </h3>
-                <button type="button" id="refreshLeaderboard">Refresh</button>
+                <button class="btn btn-info" type="button" id="refreshLeaderboard">Refresh</button>
             </div>
             <ul id="leaderboardTable">
             </ul>
@@ -33,7 +45,7 @@
                 <form action="#" id="addNewScore">
                     <input type="text" placeholder="Insert your name" name="user">
                     <input type="text" placeholder="Insert your score" name="score">
-                    <button type="submit">Submit</button>
+                    <button class="btn btn-success" type="submit">Submit</button>
                 </form>
             </div>
 
