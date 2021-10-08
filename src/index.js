@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import './style.css';
+import "./toast.css"
 import { postNewScore, getScores } from './gameAPI.js';
 
 export const table = document.getElementById('leaderboardTable');
@@ -25,6 +26,7 @@ export const loadingState = async () => {
 };
 
 window.onload = () => {
+  
   getScores();
   document.getElementById('addNewScore').addEventListener('submit', (e) => {
     addScore(new FormData(e.target));

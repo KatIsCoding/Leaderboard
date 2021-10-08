@@ -1,9 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { loadingState, addScore } from './index.js';
+import { loadingState, addScore, successToast } from './index.js';
+import { ToastManager } from './toast.js';
 
 const GAMEID = '2XrRdmsDhup1wio5IuwU';
 const BASEURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
 let LOADING = false;
+
+const toast = new ToastManager()
 
 export const postNewScore = async (username, score) => {
   fetch(`${BASEURL}games/${GAMEID}/scores/`, {
@@ -15,10 +18,13 @@ export const postNewScore = async (username, score) => {
     headers: { 'Content-type': 'application/json; charset=UTF-8' },
   }).then((res) => {
     // Using this with Bootstrap for a toast notification later on
-    if (res.status === 200) {
-      return true;
+    console.log(res.status)
+    if (res.ok) {
+      toast.Success(`Added Successfully!`)
+    } else{
+      toast.Error(`An error ocurred`)
     }
-    return false;
+    
   });
 };
 
@@ -38,8 +44,10 @@ export const getScores = async () => {
     fetch(`${BASEURL}games/${GAMEID}/scores/`).then((res) => {
       if (res.status === 200) {
         res.json().then((json) => renderTasks(true, json.result));
+        toast.Success("List Loaded!")
       } else {
         renderTasks(false, []);
+        toast.Error("An Error Happened!!")
       }
       LOADING = false;
     });

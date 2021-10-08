@@ -1,0 +1,77 @@
+.toasts {
+    width: 250px;
+    position: fixed;
+    top: 65px;
+    left: 20px;
+    z-index: 999;
+}
+
+.toast {
+    width: 100%;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 0px 20px rgba(0,0,0,0.2);
+    color: #3d3d3d;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    
+    animation-name: sli;
+    animation-duration: 1s;
+    position: relative;
+}
+
+
+
+.toast h3 {
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+progress {
+    background: rgba(0,0,0,0.2);
+}
+
+.toast progress[value] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    
+}
+
+.toast progress[value]::-webkit-progress-bar {
+    background-color: rgba(0,0,0,0);
+}
+
+.success progress[value]::-webkit-progress-value {
+    background: rgba(113, 255, 77, 0.4);
+}
+
+.error progress[value]::-webkit-progress-value {
+    background: rgba(255, 70, 70, 0.4);
+}
+
+.resultIcon{
+    font-size: 1.5em;
+}
+
+.success {
+    background-color: #71ff4d;
+}
+
+.error {
+    background-color: #ff4646;
+}
+
+@keyframes sli {
+    0% {
+        left: -400px;
+    }    
+    100% {
+        left: 0px;
+    }
+}
